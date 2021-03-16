@@ -1,32 +1,40 @@
-# PHP Library Template
-A template repository for PHP libraries.
+# PHAR Extractor
+PHAR Extractor is a console command to extract the contents of a PHAR archive.
+
+```console
+./phar-extractor.phar extract tools/phpunit
+./phar-extractor.phar extract-dir tools
+./phar-extractor.phar extract-phive-xml
+```
 
 ## Requirements
-* [Bash](https://www.gnu.org/software/bash/)
-* [Git](https://git-scm.com/)
-* [direnv](https://direnv.net/)
-* [Docker](https://www.docker.com/)
+PHAR Extractor has the following requirements:
+
+* PHP >= 7.3
 
 ## Installation
+### PHAR
+Download the PHAR file from the [GitHub Releases page](https://github.com/ngmy/phar-extractor/releases).
+
+### PHIVE
+Execute the PHIVE `install` command:
 ```console
-./install.sh library-name
+phive install --force-accept-unsigned ngmy/phar-extractor
 ```
 
-## Development Environment
-Start up my development environment:
+### Composer
+Execute the Composer `require` command:
 ```console
-laradockctl my:up
+composer require ngmy/phar-extractor
 ```
 
-Shut down my development environment:
+## Usage
 ```console
-laradockctl my:down
+./phar-extractor.phar help
 ```
 
-And more commands:
-```console
-laradockctl --help
-```
+## Documentation
+Please see the [API documentation](https://ngmy.github.io/phar-extractor/api/).
 
 ## License
-PHP Library Template is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).
+PHAR Extractor is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT).

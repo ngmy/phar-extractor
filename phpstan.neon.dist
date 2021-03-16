@@ -1,3 +1,6 @@
+includes:
+  - phpstan-baseline.neon
+
 parameters:
   bootstrapFiles:
     - tools/phpunit
@@ -5,6 +8,7 @@ parameters:
   paths:
     - src
     - tests
+    - bin
   reportUnmatchedIgnoredErrors: false
 
 # vim: set ft=yaml:
