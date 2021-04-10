@@ -1,8 +1,13 @@
 {
-    "name": "ngmy/library",
+    "name": "ngmy/phar-extractor",
     "type": "library",
-    "description": "",
-    "keywords": [],
+    "description": "A console command to extract the contents of a PHAR archive",
+    "keywords": [
+        "phar",
+        "extractor",
+        "phar extractor",
+        "phive"
+    ],
     "license": "MIT",
     "authors": [
         {
@@ -11,18 +16,22 @@
         }
     ],
     "require": {
-        "php": "^7.3|^8.0"
+        "php": "^7.3|^8.0",
+        "ngmy/observer": "^0.2.0",
+        "ngmy/typed-array": "^0.11.0",
+        "symfony/console": "^5.2",
+        "symfony/finder": "^5.2"
     },
     "require-dev": {
     },
     "autoload": {
         "psr-4": {
-            "Ngmy\\Library\\": "src/"
+            "Ngmy\\PharExtractor\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Ngmy\\Library\\Tests\\": "tests/"
+            "Ngmy\\PharExtractor\\Tests\\": "tests/"
         }
     },
     "config": {
@@ -32,20 +41,49 @@
     "prefer-stable": true,
     "scripts": {
         "test": [
-            "@php tools/phpunit --colors=always"
+            "@phpunit"
         ],
         "lint": [
-            "@php tools/phpcs"
-        ],
-        "findbugs": [
-            "@php tools/phpstan analyse --ansi"
+            "@phpcs",
+            "@phpstan",
+            "@psalm"
         ],
         "fmt": [
-            "@php tools/phpcbf | exit 0",
-            "@php tools/php-cs-fixer fix --ansi"
+            "@php-cs-fixer",
+            "@phpcbf"
         ],
-        "docs": [
-            "@php tools/phpDocumentor --force"
+        "doc": [
+            "@phpdoc"
+        ],
+        "compile": [
+            "@box"
+        ],
+        "box": [
+            "tools/box --ansi compile"
+        ],
+        "php-cs-fixer": [
+            "tools/php-cs-fixer fix --ansi"
+        ],
+        "phpcbf": [
+            "tools/phpcbf"
+        ],
+        "phpcs": [
+            "tools/phpcs"
+        ],
+        "phpdoc": [
+            "tools/phpDocumentor --force"
+        ],
+        "phpstan": [
+            "tools/phpstan analyse --ansi"
+        ],
+        "phpunit": [
+            "tools/phpunit --colors=always"
+        ],
+        "psalm": [
+            "if [ \"${PSALM_SHEPHERD:-0}\" = '0' ]; then tools/psalm --no-cache; else tools/psalm --no-cache --shepherd; fi"
         ]
-    }
+    },
+    "bin": [
+        "bin/phar-extractor"
+    ]
 }

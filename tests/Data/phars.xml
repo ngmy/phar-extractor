@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phive xmlns="https://phar.io/phive">
+    <phar name="humbug/box" version="^3.11.1" installed="3.11.1" location="./tests/Data/tools/box" copy="false"/>
+    <phar name="phpcbf" version="^3.5.8" installed="3.6.0" location="./tests/Data/tools/phpcbf" copy="false"/>
+    <phar name="phpcs" version="^3.6.0" installed="3.6.0" location="./tests/Data/tools/phpcs" copy="false"/>
+</phive>

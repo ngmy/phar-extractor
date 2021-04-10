@@ -1,0 +1,34 @@
+#!/usr/bin/env php
+<?php
+
+declare(strict_types=1);
+
+use Ngmy\PharExtractor\Console\Command;
+use Symfony\Component\Console\Application;
+
+(function () {
+    $pathWhenComposerInstallation = __DIR__
+        . \DIRECTORY_SEPARATOR . '..'
+        . \DIRECTORY_SEPARATOR . '..'
+        . \DIRECTORY_SEPARATOR . '.. '
+        . \DIRECTORY_SEPARATOR . 'autoload.php'
+        ;
+    $pathWhenPharInstallation = __DIR__
+        . \DIRECTORY_SEPARATOR . '..'
+        . \DIRECTORY_SEPARATOR . 'vendor'
+        . \DIRECTORY_SEPARATOR . 'autoload.php'
+        ;
+    if (\file_exists($pathWhenComposerInstallation)) {
+        require_once $pathWhenComposerInstallation;
+    } elseif (\file_exists($pathWhenPharInstallation)) {
+        require_once $pathWhenPharInstallation;
+    } else {
+        throw new RuntimeException('The autoload.php file does not found.');
+    }
+
+    $application = new Application();
+    $application->add(new Command\Extractor\File());
+    $application->add(new Command\Extractor\Directory());
+    $application->add(new Command\Extractor\PhiveXml());
+    $application->run();
+})();

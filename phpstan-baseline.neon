@@ -1,0 +1,17 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Parameter \\#2 \\$files of method Ngmy\\\\PharExtractor\\\\Phars\\:\\:extractTo\\(\\) expects array\\<int, string\\>\\|string\\|null, array\\<string\\>\\|bool\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Console/Command/Extractor/PharFile.php
+
+		-
+			message: "#^Parameter \\#3 \\$overwrite of method Ngmy\\\\PharExtractor\\\\Phars\\:\\:extractTo\\(\\) expects bool, array\\<string\\>\\|bool\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Console/Command/Extractor/PharFile.php
+
+		-
+			message: "#^Parameter \\#2 \\$files of method Phar\\:\\:extractTo\\(\\) expects array\\|string, array\\<int, string\\>\\|string\\|null given\\.$#"
+			count: 1
+			path: src/Phar.php
+
